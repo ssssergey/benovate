@@ -64,9 +64,9 @@ WSGI_APPLICATION = 'benovate.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'benovate',
-        'USERNAME': 'asus',
-        'PASSWORD': 'password',
+        'NAME': os.environ.get('DB_NAME'),
+        'USERNAME': os.environ.get('USERNAME'),
+        'PASSWORD': os.environ.get('PASSWORD'),
         'HOST': '127.0.0.1',
         'PORT': '5432'
     }
