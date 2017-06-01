@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Тестовое задание</title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <script src="{% static 'js/angular.min.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+</head>
+<body ng-app="app">
+<div class="container">
+    <form class="form-inline" name="ClientForm" ng-controller="formController" ng-submit="submit()">
+        <div class="row">
+            <label for="Client"> Выберите клиента: </label><br>
+            <select name="Client" ng-model="client"
+                    ng-options="client.id as client.fullname for client in clients" required>
+            </select>
+        </div>
+        <div class="row">
+            <label for="Inns"> ИНН (перечислите через запятую) </label><br>
+            <input type="text" name="Inns" ng-model="inn" required/>
+            <p style="background: red; color: white">[[errors_inns]]</p>
+        </div>
+        <div class="row">
+            <label for="Amount"> Сумма </label><br>
+            <input type="text" name="Amount" ng-model="amount" required/>
+            <p style="background: red; color: white">[[errors_amount]]</p>
+        </div>
+        <div class="row">
+            <input type="submit" value="Отправить" ng-disabled="ClientForm.$invalid">
+        </div>
+        <h3>[[ result ]]</h3>
+    </form>
+</div>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>
